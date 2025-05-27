@@ -5,7 +5,8 @@ import ReactDOM from 'react-dom/client';
 // import App from './02_普通CSS写法/App'
 // import App from './03_CSSModule写法/App'
 
-import App from './04_less编写方式/App'
+// import App from './04_less编写方式/App'
+import App from './05_cssINjs/App'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
  
