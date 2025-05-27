@@ -1,0 +1,18 @@
+.book-enter{
+    transform: translate(100px);
+    opacity: 0;
+}
+.book-enter-active{
+    transform: translate(0px);
+    opacity: 1;
+    transition: transform 2000ms ease-in; 
+}
+.book-exit{
+    transform: translate(0px);
+    opacity: 1; 
+}
+.book-exit-active{
+    transform: translate(-100px);
+    opacity: 0;
+    transition: transform 2000ms ease-in; 
+}

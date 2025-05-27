@@ -1,0 +1,23 @@
+.why-appear{
+    transform: translate(-100px,0px);
+}
+.why-appear-active{
+    transform: translate(0px,0px);
+    transition: transform 2000ms ease-in; 
+}
+
+.why-enter{
+    opacity: 0;
+}
+.why-enter-active{
+    opacity: 1;
+    transition: opacity 2000ms ease-in;
+}
+.why-exit{
+    opacity: 1;
+}
+.why-exit-active{
+    opacity: 0;
+    transition: opacity 2000ms ease;
+
+}
