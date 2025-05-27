@@ -1,0 +1,5 @@
+export const primaryColor='#1DA57A'
+export const secondaryColor='#61DAFB'
+export const smallFontSize='12px'
+export const middleFontSize='16px'
+export const largeFontSize='20px'
