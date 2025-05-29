@@ -1,15 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { request } from "../utils/index";
+
 import { setToken as _setToken,getToken } from "../utils/token";
 const UserStore=createSlice({
     name:'user',
     initialState:{
         token:getToken()||''
     },
+
     reducers:{
         setToken(state,action){
             state.token=action.payload
+
             _setToken(action.payload)
+
         }
     }
 })

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.scss';
+
 import 'normalize.css'
 
 import '@ant-design/v5-patch-for-react-19';
