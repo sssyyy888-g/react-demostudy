@@ -1,17 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-
+import { ThemeContext,UserContext } from './04_context使用/context';
+// import App from '../src/01_不使用hooks/App';
+// import App from './02_计数器的实现/App';
+// import App from './03_useEffect使用/App'
+// import App from './04_context使用/App'
+// import App from './05_useCallback和useMemo/App'
+import App from './06_useRef/App'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <UserContext.Provider value={{name:'张三',age:18}}>
+    <ThemeContext.Provider value={{color:'red'}}>
+      <App />
+    </ThemeContext.Provider>  
+  </UserContext.Provider>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
