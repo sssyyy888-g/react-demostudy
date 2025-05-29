@@ -20,6 +20,7 @@ function fetchLogin(loginForm){
    return async(dispatch)=>{
     const res=await request.post('/authorizations',loginForm)
     dispatch(setToken(res.data.token))
+    
    }
     //存token
 
