@@ -1,0 +1,29 @@
+// 确保文件扩展名为 .scss 或 .less
+.login {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  background: center/cover url('../../assets/login.png'); // 移除 ~
+
+  &-logo {
+    width: 200px;
+    height: 60px;
+    display: block;
+    margin: 0 auto 20px;
+  }
+
+  &-container {
+    width: 440px;
+    height: 360px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    background: white; // 建议添加背景色
+  }
+
+  &-checkbox-label {
+    color: #1890ff;
+  }
+}
