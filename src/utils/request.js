@@ -1,10 +1,11 @@
 import axios from 'axios'
 
-import { getToken } from './token'
+import { getToken, removeToken } from './token'
+import router from '../router'
 
 const request=axios.create({
     baseURL:'http://geek.itheima.net/v1_0',
-    timeout:5000
+    timeout:10000
 })
 
 request.interceptors.request.use(config=>{
@@ -23,6 +24,11 @@ request.interceptors.request.use(config=>{
 request.interceptors.response.use(res=>{
     return res.data
 },err=>{
+    // if(err.response.status===401){
+    //     removeToken()
+    //     router.navigate('/login')
+    //     window.location.reload()
+    // }
     return Promise.reject(err)
 })
 

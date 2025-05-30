@@ -1,11 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { request } from "../utils/index";
-
-import { setToken as _setToken,getToken } from "../utils/token";
+import { getUserInfo, loginApi} from "../apis/user";
+import { setToken as _setToken,getToken, removeToken } from "../utils/token";
 const UserStore=createSlice({
     name:'user',
     initialState:{
-        token:getToken()||''
+        token:getToken()||'',
+        userInfo:{}
     },
 
     reducers:{
@@ -14,23 +14,38 @@ const UserStore=createSlice({
 
             _setToken(action.payload)
 
+        },
+        setUserInfo(state,{payload}){
+            state.userInfo=payload
+        },
+        clearInfo(state){
+            state.token=''
+            state.userInfo={}
+            removeToken()
         }
+        
     }
 })
 
-const {setToken}=UserStore.actions
+const {setToken,setUserInfo,clearInfo}=UserStore.actions
 
 //异步方法
 function fetchLogin(loginForm){
     //发送请求
    return async(dispatch)=>{
-    const res=await request.post('/authorizations',loginForm)
+    const res=await loginApi(loginForm)
     dispatch(setToken(res.data.token))
     
    }
     //存token
 
 }
+function fetchUserInfo(){
+  return async(dispatch)=>{
+    const res=await getUserInfo()
+    dispatch(setUserInfo(res.data))
+  } 
+}
 
-export {setToken,fetchLogin}
+export {setToken,fetchLogin,fetchUserInfo,clearInfo}
 export default UserStore.reducer
