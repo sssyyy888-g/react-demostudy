@@ -17,7 +17,7 @@ import './index.scss'
 import { useState ,useEffect} from'react'
 import ReactQuill from 'react-quill'
 import 'react-quill/dist/quill.snow.css'
-import { getDetail, postArticle } from '../../apis/article'
+import { getDetail, postArticle, putArticle } from '../../apis/article'
 import { useChannnel } from '../../hooks/useChannel'
 
 
@@ -27,15 +27,42 @@ const Publish = () => {
    const{channels}=useChannnel()
     function onFinish(value){
         console.log(value);
-        postArticle({
+        if(id){
+            putArticle(
+               {
+                id,
+                title:value.title,
+                content:value.content,
+                channel_id:value.channel_id,
+            cover:{
+                type:type,
+                images:fileList.map(item=>{
+                    if(item.response){
+                        return item.response.data.url
+                    }else{
+                        return item.url
+                    }
+                }),
+            }
+               }
+            )
+        }else{
+            postArticle({
             title:value.title,
             content:value.content,
             channel_id:value.channel_id,
             cover:{
                 type:type,
-                images:fileList.map(item=>item.response.data.url),
+                images:fileList.map(item=>{
+                    if(item.response){
+                        return item.response.data.url
+                    }else{
+                        return item.url
+                    }
+                }),
             }
         })
+        }
         message.success('发布成功')
         
     }

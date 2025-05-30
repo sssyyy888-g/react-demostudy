@@ -36,3 +36,10 @@ export function getDetail(id){
 
     })
 }
+export function putArticle(data){
+    return request({
+        url:`/mp/articles/${data.id}?draft=false`,
+        method:'put',
+        data:data
+    })
+}
